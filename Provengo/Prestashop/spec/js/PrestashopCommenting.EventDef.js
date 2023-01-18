@@ -17,11 +17,17 @@ defineEvent(SeleniumSession, "goToProduct", function(session, e) {
 /**
  * The leaveReview event defines the selenium actions for giving a review for a product.
  */
-defineEvent(SeleniumSession, "leaveReview", function(session, e) {
+defineEvent(SeleniumSession, "fillReview", function(session, e) {
     session.click("//*[@id='product-comments-list-footer']/button");
     session.writeText("//*[@id='post-product-comment-form']/div[2]/div[1]/input", e.title);
     session.writeText("//*[@id='post-product-comment-form']/div[2]/div[2]/input", e.name);
-    session.writeText("//*[@id='post-product-comment-form']/div[4]/div/textarea". e.content);
+    session.writeText("//*[@id='post-product-comment-form']/div[4]/div/textarea", e.review);
+})
+
+/**
+ * The submitReview event defines the selenium actions for submitting of a review.
+ */
+defineEvent(SeleniumSession, "submitReview", function(session, e) {
     session.click("//*[@id='post-product-comment-form']/div[6]/div[2]/button[2]");
 })
 
@@ -38,11 +44,10 @@ defineEvent(SeleniumSession, "adminLogin", function(session, e) {
  * The navigateToModule event defines the selenium actions for reaching a specific module settings.
  */
 defineEvent(SeleniumSession, "navigateToModule", function(session, e) {
-    session.click("//*[@id='header_infos']/i");
-    session.click("//*[@id='subtab-AdminParentModulesSf']/a/span");
-    session.click("//*[@id='subtab-AdminModulesSf']/a");
-    session.writeText("//*[@id='search-input-group']/div[1]/div[2]/input", e.module);
-    session.click("//*[@id='module-search-button']");
+    session.click("//*[@id='quick_select']")
+    session.click("//*[@id='header_quick']/div/ul/li[2]/a")
+    session.writeText("//*[@id='search-input-group']/div[1]/div[2]/input", e.module)
+    session.click("//*[@id='module-search-button']/i")
 })
 
 /**
@@ -51,4 +56,5 @@ defineEvent(SeleniumSession, "navigateToModule", function(session, e) {
 defineEvent(SeleniumSession, "turnOffCommenting", function(session, e) {
     session.click("//*[@id='modules-list-container-theme_modules']/div/div/div/div[2]/div[4]/div[2]/a");
     session.click("//*[@id='PRODUCT_COMMENTS_ALLOW_GUESTS_off']");
+    session.click("//*[@id='productcomments_form_submit_btn']")
 })

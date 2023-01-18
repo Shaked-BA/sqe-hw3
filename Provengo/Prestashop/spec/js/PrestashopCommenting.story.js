@@ -5,14 +5,10 @@
  */
 story('Guest leaves a review for a product', function () {
   with (new SeleniumSession().start('http://localhost:8080/')) {
-    goToProduct()
-    try
-    {
-        leaveReview({ title: 'Great Shirt', name: 'David', content: 'Really liked the fabric'})
-        OkPopup()
-    }
-    catch (ex){
-    }
+    goToProduct();
+    fillReview({ title: 'Great Shirt', name: 'David', review: 'Really liked the fabric'});
+    submitReview();
+    OkPopup();
   }
 })
 
@@ -21,20 +17,44 @@ story('Guest leaves a review for a product', function () {
  */
 story('Admin prevents guest commenting', function () {
   with (new SeleniumSession().start('http://localhost:8080/admin-demo-appendix')) {
-    adminLogin({username: 'gadmicha@post.bgu.ac.il', password: 'sqproject3'})
-    start('http://localhost:8080/admin-demo-appendix/index.php/improve/modules/manage?_token=aFzsEyGtqiuvN3BjpM8UqhOzyNjZaIqX6dF0ukuQq1o')
-//    navigateToModule({module: 'comment'})
-    turnOffCommenting()
+    adminLogin({username: 'gadmicha@post.bgu.ac.il', password: 'sqproject3'});
+    navigateToModule({module: 'comment'});
+    turnOffCommenting();
   }
 })
 
-///**
-// * This story verifies that if a guest is adding a review while the option to leave a review was turned
-//   off by the admin, then the review won't be published.
-// */
-//story('Guest comment not added because the admin changed the configurations', function () {
-//  with (new SeleniumSession().start('https://google.com')) {
-//    adminLogin({username: 'gadmicha@post.bgu.ac.il', password: 'sqproject3'})
-//    feelLucky()
+/////**
+//// * This story verifies that a guest review was added.
+//// */
+//story('Check add comment before change', function () {
+//  with (new SeleniumSession().start('http://localhost:8080')) {
+//    goToProduct();
+//    fillReview({ title: 'Great Shirt', name: 'David', review: 'Really liked the fabric'});
+//    submitReview();
+//    OkPopup();
+//  }
+//})
+//
+/////**
+//// * This story verifies that if a guest is adding a review after the option to leave a review was turned
+////   off by the admin, then the review won't be published.
+//// */
+//story('Check add comment after change', function () {
+//  with (new SeleniumSession().start('http://localhost:8080')) {
+//    adminLogin({username: 'gadmicha@post.bgu.ac.il', password: 'sqproject3'});
+//    navigateToModule({module: 'comment'});
+//    turnOffCommenting();
+//  }
+//})
+//
+/////**
+//// * This story verifies that if a guest is adding a review while the option to leave a review was turned
+////   off by the admin, then the review won't be published.
+//// */
+//story('Check add comment while change', function () {
+//  with (new SeleniumSession().start('http://localhost:8080')) {
+//    adminLogin({username: 'gadmicha@post.bgu.ac.il', password: 'sqproject3'});
+//    navigateToModule({module: 'comment'});
+//    turnOffCommenting();
 //  }
 //})
