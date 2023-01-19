@@ -31,6 +31,13 @@ defineEvent(SeleniumSession, "submitReview", function(session, e) {
     session.click("//*[@id='post-product-comment-form']/div[6]/div[2]/button[2]");
 })
 
+///**
+// * The assertAdded event defines the selenium actions for asserting a review.
+// */
+//defineEvent(SeleniumSession, "assertAdded", function(session, e) {
+//    session.assertText("//*[@id='product-comment-posted-modal-message']", "Your comment has been added!");
+//})
+
 /**
  * The adminLogin event defines the selenium actions for admin login to the system.
  */
@@ -57,4 +64,18 @@ defineEvent(SeleniumSession, "turnOffCommenting", function(session, e) {
     session.click("//*[@id='modules-list-container-theme_modules']/div/div/div/div[2]/div[4]/div[2]/a");
     session.click("//*[@id='PRODUCT_COMMENTS_ALLOW_GUESTS_off']");
     session.click("//*[@id='productcomments_form_submit_btn']")
+})
+
+/**
+ * The assertSaved event defines the selenium actions for asserting settings saved.
+ */
+defineEvent(SeleniumSession, "assertSaved", function(session, e) {
+    session.assertText("//*[@id='content']/div[3]", "Settings updated");
+})
+
+/**
+ * The turnOffCommenting event defines the selenium actions for turning commenting off.
+ */
+defineEvent(SeleniumSession, "checkAfterSubmission", function(session, e) {
+    session.assertText("//*[@id='product-comment-post-error-message']", "You need to be logged in or create an account to post your review.");
 })
