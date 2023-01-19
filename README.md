@@ -2,31 +2,34 @@
 This is a repository for assignment 3 of the Software Quality Engineering course at the [Ben-Gurion University](https://in.bgu.ac.il/), Israel.
 
 ## Assignment Description
-In this assignment, we tested an open-source software called [$$*TODO* software name$$](https://address-of-the-project.com).
+In this assignment, we tested an open-source software called Prestashop (https://www.prestashop.com).
 
-$$*TODO* Add some general description about the software$$
+Prestashop supplies flexible and scalable ecommerce platform to launch an online business owned and designed the user.
 
 ## Installation
-$$*TODO* Write instructions on how to install the software and prepare the testing environment$$
-
+* Docker installation guide: https://www.docker.com/products/docker-desktop/
+* Prestashop installation guides: https://webkul.com/blog/running-prestashop-in-docker-container/ https://hub.docker.com/r/prestashop/prestashop/
+* Another tutorial: https://www.youtube.com/watch?v=J4lq2eW_npE&ab_channel=PatriTech
 ## What we tested
-$$*TODO* Add a description of the module and the user stories that you chose to test.
-For example, in the case of the Moodle example, you can write something like this:
+We tested the guest commenting module that responsible for the guest users reviews permission. We chose to test the following user stories: 
 
-We tested the quiz module that allows for creating and taking quizzes. We chose to test the following user stories: 
+*User story:* A guest user adds a review on a product of the online shop. 
 
-*User story:* A teacher adds a new quiz to the course with two yes/no questions
+*Preconditions:* There product in the system to review.
 
-*Preconditions:* There is a course with a teacher
+*Expected outcome:* The review is published in the products page.
 
-*Expected outcome:* The quiz is added to the course.
+*User story:* The shops admin turns off the guest commenting option.
 
-*User story:* A students attempts a quiz and answers correctly.
+*Preconditions:* The guest commenting option is turned on.
 
-*Preconditions:* There is a course with a quiz with two yes/no questions and the quiz grade is calculated automatically and the grade is visible to the students upon submission.
+*Expected outcome:* The guest commenting option is turned off.
 
-*Expected outcome:* The student receives 100.
-$$
+*User story:* The shops admin turns off the guest commenting option while a guest user is posting a comment.
+
+*Preconditions:* There product in the system to review and the guest commenting option is turned on.
+
+*Expected outcome:* The review is not published in the products page.
 
 ## How we tested
 We used two different testing methods:
@@ -36,17 +39,4 @@ We used two different testing methods:
 Each of the testing methods is elaborated in its own directory. 
 
 ## Results
-Update all README.md files (except for d-e, see Section 1). Specifically, replace all $$*TODO*…$$ according to the instructions inside the $$.
-
-## Detected Bugs
-We detected the following bugs:
-
-1. Bug 1: 
-   1. General description: ...
-   2. Steps to reproduce: ...
-   3. Expected result: ...
-   4. Actual result: ...
-   5. Link to the bug report: (you are encouraged to report the bug to the developers of the software)
-2. Bug 2: ...
-
-$$*TODO* if you did not detect the bug, you can delete this section$$  
+Prestashops guest commenting module works properly and performs the expected outcome.

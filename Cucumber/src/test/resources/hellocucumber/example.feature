@@ -1,9 +1,4 @@
 Feature: A set of scenarios for testing the commenting module
-#
-#  Scenario: Testing how a case where a user adds a product to the cart
-#    Given an example scenario
-#    When all step definitions are implemented
-#    Then the scenario passes
 
   Scenario: Testing a case where a user adds a comment to a product
     Given User is in the shops home page
