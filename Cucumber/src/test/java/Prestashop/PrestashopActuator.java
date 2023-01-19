@@ -49,6 +49,7 @@ public class PrestashopActuator {
         driver.findElement(By.xpath("//*[@id='post-product-comment-form']/div[6]/div[2]/button[2]")).click();
     }
 
+    // Looks for a success message after posting a review by a guest
     public boolean checkSuccessfullyReviewed(){
         try {
             driver.findElement(By.xpath("//*[@id='product-comment-posted-modal-message']"));
@@ -59,9 +60,10 @@ public class PrestashopActuator {
         return true;
     }
 
+    // Looks for an error message after a user tries to post a review while guests commenting is turned off
     public boolean checkNotSuccessfullyReviewed(){
         try {
-            driver.findElement(By.xpath("//*[contains(text(),'Your review cannot be sent')]"));
+            driver.findElement(By.id("product-comment-post-error-message"));
         }
         catch (Exception e) {
             return false;
@@ -69,6 +71,7 @@ public class PrestashopActuator {
         return true;
     }
 
+    // Admins log in
     public void logIn(String username, String password) {
         driver.findElement(By.id("email")).sendKeys(username);
         driver.findElement(By.id("passwd")).sendKeys(password);
@@ -80,10 +83,8 @@ public class PrestashopActuator {
         driver.findElement(By.id("subtab-AdminParentModulesSf")).click();
         driverWait.until(ExpectedConditions.elementToBeClickable(By.id("subtab-AdminModulesSf"))).click();
         driver.findElement(By.id("subtab-AdminModulesSf")).click();
-//        driverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='subtab-AdminModulesSf']/a"))).click();
         driverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='search-input-group']/div[1]/div[2]/input"))).click();
         driver.findElement(By.xpath("//*[@id='search-input-group']/div[1]/div[2]/input")).sendKeys("comment");
-        //*[@id="search-input-group"]/div[1]/div[2]/input
         driverWait.until(ExpectedConditions.elementToBeClickable(By.id("module-search-button"))).click();
         driver.findElement(By.id("module-search-button")).click();
     }
@@ -94,6 +95,7 @@ public class PrestashopActuator {
         driver.findElement(By.id("productcomments_form_submit_btn")).click();
     }
 
+    // Looks for a success message after turning guest commenting off
     public boolean checkSuccessfullyTurnedOff(){
         try {
             driver.findElement(By.xpath("//*[contains(text(),'Settings updated')]"));
