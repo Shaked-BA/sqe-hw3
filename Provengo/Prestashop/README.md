@@ -1,4 +1,4 @@
-# helloprovengo
+# Prestashop
 
 ---
 2022-12-18 09:19:04
@@ -28,7 +28,7 @@ Provnego project for spec-ing and testing my system.
 
 ## Useful Commands
 
-⚠️ NOTE: In the below listings, we assume that `provengo` is in the system's PATH variable, and that `helloprovengo` is the (relative/absolute) path to this directory.
+⚠️ NOTE: In the below listings, we assume that `provengo` is in the system's PATH variable, and that `Prestashop` is the (relative/absolute) path to this directory.
 
 For full documentation go to [https://docs.provengo.tech](https://docs.provengo.tech).
 
@@ -36,14 +36,14 @@ For full documentation go to [https://docs.provengo.tech](https://docs.provengo.
 
 Perform a single run through the specification. Good for "Sanity checks", i.e. to see examples of what can happen.
 
-    provengo run helloprovengo
+    provengo run Prestashop
 
 
 ### Visualize the Spec
 
 Draw the specification in a PDF file.
 
-    provengo analyze -f pdf helloprovengo
+    provengo analyze -f pdf Prestashop
 
 
 ⚠️ NOTE: This requires [Graphviz](http://graphviz.org) to be installed.
@@ -53,7 +53,7 @@ Draw the specification in a PDF file.
 
 Sample 10 scenarios into a file. The scenarios are stored in a file called `samples.json` (this can be changed using the `-o`/`--output-file` switch).
 
-    provengo sample --delete-previous --sample-size 10 helloprovengo
+    provengo sample --delete-previous --sample-size 10 Prestashop
 
 
 ### Create an Optimized Test Suite
@@ -62,16 +62,16 @@ Generate a test suite of 5 tests that provides a good coverage of items in the [
 
 **Requires running `sample` first** (the previous command)**.**
 
-    provengo ensemble --suite-size 5 helloprovengo
+    provengo ensemble --suite-size 5 Prestashop
 
 #### Visualize the Spec and the Suite
 
 Draw the specification, and highlight the traces in the optimized test suite create by the previous command.
 
-    provengo analyze -f pdf --highlight-file ensemble.json helloprovengo
+    provengo analyze -f pdf --highlight-file ensemble.json Prestashop
 
 ### Create Test Scripts for Third Party Systems
 
 Converts the runs in `ensemble.json` to automation test scripts.
 
-    provengo gen-scripts -s ensemble.json helloprovengo
+    provengo gen-scripts -s ensemble.json Prestashop
