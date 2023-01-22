@@ -9,6 +9,7 @@ public class StepDefinitions {
 
     private final String ADMIN_USERNAME = "shaked.benaharon@gmail.com";
     private final String ADMIN_PASSWORD = "sqproject3";
+    // After connecting to docker
     private final String USER_PATH = "http://localhost:8080/";
     private final String ADMIN_PATH = "http://localhost:8080/admin-demo-appendix";
     private static PrestashopActuator prestashopUser;
